@@ -58,4 +58,20 @@ describe('MainComponent', () => {
     expect(component.todos.length).toBe(1); // No new todo should be added
     expect(window.alert).toHaveBeenCalledWith('This todo item already exists!'); // Alert should be called
   });
+
+
+  it('should delete a todo and move it to the deletedTodos list', () => {
+    // Setup: Add a todo to be deleted
+    const testTaskTitle = 'Todo to Delete';
+    component.todoForm.controls['taskTitle'].setValue(testTaskTitle);
+    component.addTodo();
+    const todoToDelete = component.todos[0];
+
+    // Act: Delete the todo
+    component.deleteTodo(todoToDelete);
+
+    // Assert: Todo is removed from todos and added to deletedTodos
+    expect(component.todos).not.toContain(todoToDelete);
+    expect(component.deletedTodos).toContain(todoToDelete);
+  });
 });

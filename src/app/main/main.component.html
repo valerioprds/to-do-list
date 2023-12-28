@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <div class="container mt-4">
   <!-- Form for adding new To-Do items -->
   <form [formGroup]="todoForm" (ngSubmit)="addTodo()" class="input-group mb-3">
@@ -26,6 +28,8 @@
     <li
       class="list-group-item d-flex justify-content-between align-items-center"
       *ngFor="let todo of todos"
+      (mouseenter)="hoveringOverItem = todo"
+      (mouseleave)="hoveringOverItem = null"
     >
       <div class="form-check">
         <input
@@ -40,6 +44,13 @@
           {{ todo.title }}
         </label>
       </div>
+      <button
+        *ngIf="hoveringOverItem === todo"
+        class="btn btn-sm"
+        (click)="deleteTodo(todo)"
+      >
+        <i class="fa-solid fa-trash-can" style="color: #f00000"></i>
+      </button>
     </li>
   </ul>
 </div>

@@ -20,6 +20,8 @@ import { CommonModule } from '@angular/common';
 export class MainComponent implements OnInit {
   todoForm!: FormGroup;
   todos: Todo[] = [];
+  deletedTodos: Todo[] = []; // Store deleted todos
+  hoveringOverItem: Todo | null = null;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -47,4 +49,10 @@ export class MainComponent implements OnInit {
       this.todoForm.get('taskTitle')!.setValue('');
     }
   }
+
+  deleteTodo(todo: Todo) {
+    this.todos = this.todos.filter(t => t !== todo);
+    this.deletedTodos.push(todo); // Add to deleted todos list
+  }
+
 }

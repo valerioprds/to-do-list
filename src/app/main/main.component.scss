@@ -21,3 +21,25 @@ li {
   font-weight: bold;
   margin-bottom: 10px;
 }
+
+
+/* delete button effects  */
+
+
+.list-group-item {
+  position: relative;
+}
+
+.list-group-item button {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.list-group-item:hover button {
+  display: block;
+}
+
+
