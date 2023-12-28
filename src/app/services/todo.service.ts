@@ -16,9 +16,7 @@ export class TodoService {
     return this.todos;
   }
 
-  getDeletedTodos(): Todo[] {
-    return this.deletedTodos;
-  }
+
 
   addTodo(todo: Todo): void {
     this.todos.push(todo);
@@ -26,10 +24,18 @@ export class TodoService {
   }
 
   deleteTodo(todo: Todo): void {
+    console.log(`11111111111111 from service ${todo.title}`);
     this.todos = this.todos.filter((t) => t !== todo);
     this.deletedTodos.push(todo);
     this.saveTodosToLocalStorage();
-    console.log('items deleted*************')
+    //console.log(`deleted array ${this.deletedTodos}`)
+  }
+
+  getDeletedTodos(): Todo[] {
+    console.log(
+      `888888888888getDeletedTodos    deleted array ${this.deletedTodos} `
+    );
+    return this.deletedTodos;
   }
 
   private saveTodosToLocalStorage(): void {

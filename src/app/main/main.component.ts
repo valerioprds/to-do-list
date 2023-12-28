@@ -59,6 +59,8 @@ export class MainComponent implements OnInit {
   }
 
   deleteTodo(todo: Todo) {
+    console.log(todo.title)
     this.todoService.deleteTodo(todo);
+    console.log(`${todo} from main component`);
   }
 }
