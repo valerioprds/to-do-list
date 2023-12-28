@@ -32,13 +32,18 @@ export class MainComponent implements OnInit {
     const taskControl = this.todoForm.get('taskTitle');
 
     if (taskControl && taskControl.value) {
+      // Check if the todo already exists
+      if (this.todos.some((todo) => todo.title === taskControl.value)) {
+        alert('This todo item already exists!');
+        return;
+      }
+
       this.todos.push({
         title: taskControl.value,
         isCompleted: new FormControl(false),
       });
       this.todoForm.reset();
-      this.todoForm.get('taskTitle')!.setValue('');  // Explicitly set to empty string
+      this.todoForm.get('taskTitle')!.setValue('');
     }
   }
-
 }

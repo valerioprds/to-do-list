@@ -42,4 +42,20 @@ describe('MainComponent', () => {
     component.addTodo();
     expect(component.todos.length).toBe(0);
   });
+
+  it('should not add a todo and alert if the todo already exists', () => {
+    const testTaskTitle = 'Existing Todo Task';
+    component.todoForm.controls['taskTitle'].setValue(testTaskTitle);
+    component.addTodo(); // Add for the first time
+
+    // Mock and spy on window.alert
+    window.alert = jest.fn();
+
+    // Try to add the same todo again
+    component.todoForm.controls['taskTitle'].setValue(testTaskTitle);
+    component.addTodo();
+
+    expect(component.todos.length).toBe(1); // No new todo should be added
+    expect(window.alert).toHaveBeenCalledWith('This todo item already exists!'); // Alert should be called
+  });
 });
