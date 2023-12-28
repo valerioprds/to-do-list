@@ -7,7 +7,6 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AppComponent],
       // Add any required modules or providers here
     }).compileComponents();
 
