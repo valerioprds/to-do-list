@@ -1,0 +1,17 @@
+.completed {
+  text-decoration: line-through;
+}
+
+.todo-list-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
