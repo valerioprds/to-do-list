@@ -29,7 +29,10 @@ export class MainComponent implements OnInit {
     this.todoForm = this.formBuilder.group({
       taskTitle: ['', Validators.required],
     });
+    this.loadTodosFromLocalStorage();
   }
+
+
 
   addTodo() {
     const taskControl = this.todoForm.get('taskTitle');
@@ -47,12 +50,35 @@ export class MainComponent implements OnInit {
       });
       this.todoForm.reset();
       this.todoForm.get('taskTitle')!.setValue('');
+      this.saveTodosToLocalStorage();
     }
   }
 
   deleteTodo(todo: Todo) {
     this.todos = this.todos.filter(t => t !== todo);
+    //&
     this.deletedTodos.push(todo); // Add to deleted todos list
+    console.log('delete todo items ' + this.deletedTodos)
+    this.saveTodosToLocalStorage();
+
   }
+
+
+  saveTodosToLocalStorage() {
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+  }
+
+
+  loadTodosFromLocalStorage() {
+    const savedTodos = localStorage.getItem('todos');
+    if (savedTodos) {
+      this.todos = JSON.parse(savedTodos).map((todo: { isCompleted: any; })  => ({
+        ...todo,
+        isCompleted: new FormControl(todo.isCompleted),
+      }));
+    }
+  }
+
+
 
 }
