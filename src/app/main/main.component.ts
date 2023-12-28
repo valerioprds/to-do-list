@@ -1,3 +1,4 @@
+import { Todo } from './../../models/todo';
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import {
@@ -18,7 +19,7 @@ import { CommonModule } from '@angular/common';
 })
 export class MainComponent implements OnInit {
   todoForm!: FormGroup;
-  todos: any[] = [];
+  todos: Todo[] = [];
 
   constructor(private formBuilder: FormBuilder) {}
 
