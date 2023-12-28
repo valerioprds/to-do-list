@@ -22,7 +22,10 @@ export class MainComponent implements OnInit {
   todoForm!: FormGroup;
   hoveringOverItem: Todo | null = null;
 
-  constructor(private formBuilder: FormBuilder, private todoService: TodoService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private todoService: TodoService
+  ) {}
 
   ngOnInit() {
     this.todoForm = this.formBuilder.group({
@@ -42,7 +45,7 @@ export class MainComponent implements OnInit {
     const taskControl = this.todoForm.get('taskTitle');
 
     if (taskControl && taskControl.value) {
-      if (this.todos.some(todo => todo.title === taskControl.value)) {
+      if (this.todos.some((todo) => todo.title === taskControl.value)) {
         alert('This todo item already exists!');
         return;
       }
