@@ -37,6 +37,8 @@ export class MainComponent implements OnInit {
         isCompleted: new FormControl(false),
       });
       this.todoForm.reset();
+      this.todoForm.get('taskTitle')!.setValue('');  // Explicitly set to empty string
     }
   }
+
 }
