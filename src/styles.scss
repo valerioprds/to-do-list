@@ -1,4 +1,4 @@
-/* Define color palette and other variables for easy customization */
+/* Enhanced Color Palette */
 $primary-color: #007bff;
 $secondary-color: #6c757d;
 $background-color: #e3ecf4;
@@ -6,37 +6,40 @@ $todo-item-color: #ffffff;
 $todo-item-hover-color: #f2f2f2;
 $completed-text-color: #28a745;
 $deleted-text-color: #dc3545;
-$font-family: 'Arial', sans-serif;
+$font-family: "Arial", sans-serif;
 
-/* Base container style */
+/* Base container style with shadow and transition */
 .container {
   background-color: $background-color;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 1s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Animated gradient background for buttons */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-h1 {
-  color: $secondary-color;
-}
-
-/* Style for the input group */
+/* Style for the input group with animated border */
 .input-group {
   input.form-control {
     border: 2px solid $primary-color;
     border-radius: 4px;
     padding: 10px 15px;
-    font-family: $font-family;
-    transition: border-color 0.3s, box-shadow 0.3s;
-
+    transition: border-color 0.3s ease;
     &:focus {
-      box-shadow: 0 0 0 3px rgba($primary-color, 0.25);
+      border-color: lighten($primary-color, 10%);
+      animation: pulse 1.5s infinite;
     }
   }
 
@@ -45,30 +48,45 @@ h1 {
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
-    font-family: $font-family;
-    transition: background-color 0.3s;
-
+    background-image: linear-gradient(
+      45deg,
+      $primary-color,
+      lighten($primary-color, 15%)
+    );
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
     &:hover {
       background-color: darken($primary-color, 10%);
     }
   }
 }
 
-/* Style for the list items */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba($primary-color, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba($primary-color, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba($primary-color, 0);
+  }
+}
+
+/* Style for the list items with hover effect and animation */
 .list-group {
   li.list-group-item {
     background-color: $todo-item-color;
     margin-bottom: 10px;
     padding: 15px;
     border-radius: 6px;
-    transition: background-color 0.3s;
-    animation: slideIn 0.5s ease-out;
-
+    transition: background-color 0.3s ease, transform 0.3s ease;
     &:hover {
       background-color: $todo-item-hover-color;
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 
-    /* Style for the form-check */
     .form-check {
       input.form-check-input {
         margin-right: 10px;
@@ -76,39 +94,21 @@ h1 {
 
       label.form-check-label {
         color: $secondary-color;
-        text-decoration: none;
-
-        &.text-decoration-line-through {
-          color: $completed-text-color;
-          text-decoration: line-through;
-          transition: color 0.3s ease-in-out;
+        transition: color 0.3s ease;
+        &:hover {
+          color: darken($secondary-color, 10%);
         }
       }
     }
 
-    /* Style for the delete button */
     button.btn-sm {
       color: $deleted-text-color;
       border: none;
       background: none;
       padding: 5px 10px;
-      font-size: 16px;
-      transition: color 0.3s ease-in-out;
-
-      &:hover {
-        color: lighten($deleted-text-color, 20%);
-      }
-
-      i.fa-trash-can {
-        color: inherit;
-      }
+      transition: color 0.3s ease;
     }
   }
-}
-
-@keyframes slideIn {
-  from { transform: translateX(-100px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
 }
 
 /* Style for item count text */
@@ -119,5 +119,16 @@ h1 {
   font-weight: bold;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
