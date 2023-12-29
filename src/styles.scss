@@ -1,4 +1,96 @@
+/* Define color palette and other variables for easy customization */
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$background-color: #e3ecf4;
+$todo-item-color: #ffffff;
+$todo-item-hover-color: #f2f2f2;
+$completed-text-color: #28a745;
+$deleted-text-color: #dc3545;
+$font-family: 'Arial', sans-serif;
+
+/* Base container style */
+.container {
+  background-color: $background-color;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+h1 {
+  color:$secondary-color ;
+}
+
+/* Style for the input group */
+.input-group {
+  input.form-control {
+    border: 2px solid $primary-color;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-family: $font-family;
+  }
+
+  button.btn-primary {
+    background-color: $primary-color;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: $font-family;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+
+/* Style for the list items */
+.list-group {
+  li.list-group-item {
+    background-color: $todo-item-color;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $todo-item-hover-color;
+    }
+
+    /* Style for the form-check */
+    .form-check {
+      input.form-check-input {
+        margin-right: 10px;
+      }
+
+      label.form-check-label {
+        color: $secondary-color;
+        text-decoration: none;
+
+        &.text-decoration-line-through {
+          color: $completed-text-color;
+          text-decoration: line-through;
+        }
+      }
+    }
+
+    /* Style for the delete button */
+    button.btn-sm {
+      color: $deleted-text-color;
+      border: none;
+      background: none;
+      padding: 5px 10px;
+      font-size: 16px;
+
+      i.fa-trash-can {
+        color: inherit;
+      }
+    }
+  }
+}
+
+/* Style for item count text */
 .item-count {
+  color: $secondary-color;
+  font-family: $font-family;
+  margin-bottom: 15px;
   font-weight: bold;
-  margin-bottom: 10px;
 }
