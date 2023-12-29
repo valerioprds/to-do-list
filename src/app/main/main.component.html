@@ -1,25 +1,41 @@
 <div class="container mt-4">
   <!-- Form for adding new To-Do items -->
-  <form [formGroup]="todoForm" (ngSubmit)="addTodo()" class="input-group mb-3">
-    <input
-      type="text"
-      formControlName="taskTitle"
-      class="form-control"
-      placeholder="Enter a new task"
-      aria-label="New task"
-      aria-describedby="button-addon2"
-    />
-    <button
-      class="btn btn-primary"
-      type="submit"
-      id="button-addon2"
-      [disabled]="!todoForm.valid"
-    >
-      Add Task
-    </button>
+  <form [formGroup]="todoForm" (ngSubmit)="addTodo()" class="mb-3">
+    <div class="input-group">
+      <input
+        type="text"
+        formControlName="taskTitle"
+        class="form-control"
+        placeholder="Enter a new task"
+        aria-label="New task"
+        aria-describedby="button-addon2"
+      />
+      <button
+        class="btn btn-primary"
+        type="submit"
+        id="button-addon2"
+        [disabled]="!todoForm.valid"
+      >
+        Add Task
+      </button>
+    </div>
+    <div *ngIf="todoForm.get('taskTitle')?.touched" class="mt-2">
+      <span
+        *ngIf="todoForm.get('taskTitle')?.hasError('required')"
+        class="text-danger error-label"
+      >
+        <strong>Required</strong> field
+      </span>
+      <span
+        *ngIf="todoForm.get('taskTitle')?.hasError('minlength')"
+        class="text-danger error-label d-block"
+      >
+        Minimum <strong>6 Characters</strong>
+      </span>
+    </div>
   </form>
-  <h1 class="text-center m-3">Pending Tasks</h1>
 
+  <h1 class="text-center m-3">Pending Tasks</h1>
   <p class="item-count">Total Items: {{ todos.length }}</p>
 
   <!-- List of To-Do items -->
@@ -54,5 +70,4 @@
     </li>
   </ul>
 </div>
-
 <app-completed-todos></app-completed-todos>

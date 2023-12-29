@@ -42,13 +42,14 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.todoForm = this.formBuilder.group({
-      taskTitle: ['', Validators.required],
+      taskTitle: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
-      duration: 2000, // Duration in milliseconds
+      duration: 2000,
+      verticalPosition: 'top',
     });
   }
 
