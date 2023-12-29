@@ -1,7 +1,7 @@
 # Documentation for To-Do List Application
 
 ## Overview
-This document provides a comprehensive guide to the "To-Do List" Angular application. The app is structured to manage tasks with features like adding, deleting, and marking tasks as completed. It leverages Angular's reactive forms for input handling and Angular Material for UI components.
+This document provides a comprehensive guide to the "To-Do List" application developed using Angular version 17. The app is designed to manage tasks with features like adding, deleting, and marking tasks as completed. It leverages Angular 17's reactive forms for input handling and Angular Material for UI components.
 
 ## Package Dependencies (`package.json`)
 - **Angular Core & Related Libraries**: Version 17.0.0, enabling robust app architecture.
@@ -9,6 +9,19 @@ This document provides a comprehensive guide to the "To-Do List" Angular applica
 - **RxJS**: Reactive programming library.
 - **Jest**: Testing framework for JavaScript.
 - **TypeScript**: Programming language used, version ~5.2.2.
+
+## Installation
+To install and set up the application, follow these steps:
+
+1. Clone the repository to your local machine.
+2. Navigate to the project directory in your terminal.
+3. Run `npm install` to install all the dependencies listed in `package.json`.
+
+## Running the Application
+After installation, you can run the application locally:
+
+1. Execute `ng serve -o` to start the development server.
+2. Open your web browser and go to `http://localhost:4200/` to view the app.
 
 ## Main Components
 
@@ -45,10 +58,13 @@ Styles for each component are defined in their respective SCSS files, ensuring a
 
 ## Services
 - **`TodoService`**: Central service for task management. Provides methods for adding, deleting, completing, and retrieving tasks in different states.
+- 
+## Running Tests
+To run tests in this application, follow these steps:
 
-## Testing
-- Configured with Jest, offering a robust testing framework.
-- `jest-preset-angular` for Angular-specific configurations.
+1. Ensure that all dependencies, including testing libraries, are installed.
+2. Run `npm test` to execute tests using Jest.
+3. To view coverage, run `npm run test:coverage`.
 
 ## Conclusion
-This To-Do List application exemplifies a modern Angular application with a focus on modularity, reactive forms, and user interaction. It's designed to be scalable and maintainable, leveraging Angular's ecosystem and best practices.
+This To-Do List application exemplifies a modern Angular 17 application with a focus on modularity, reactive forms, and user interaction. It's designed to be scalable and maintainable, leveraging Angular's ecosystem and best practices.
