@@ -1,6 +1,9 @@
 import { Todo } from './../../models/todo';
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 import {
   FormBuilder,
   FormControl,
@@ -23,7 +26,8 @@ import { CompletedTodosComponent } from "../completed-todos/completed-todos.comp
         ReactiveFormsModule,
         CommonModule,
         DeletedTodosComponent,
-        CompletedTodosComponent
+        CompletedTodosComponent,
+        MatSnackBarModule
     ]
 })
 export class MainComponent implements OnInit {
@@ -32,12 +36,19 @@ export class MainComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private todoService: TodoService
+    private todoService: TodoService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
     this.todoForm = this.formBuilder.group({
       taskTitle: ['', Validators.required],
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000, // Duration in milliseconds
     });
   }
 
@@ -54,7 +65,9 @@ export class MainComponent implements OnInit {
 
     if (taskControl && taskControl.value) {
       if (this.todos.some((todo) => todo.title === taskControl.value)) {
-        alert('This todo item already exists!');
+        //alert('This todo item already exists!');
+        this.openSnackBar(`${taskControl.value} already exists!`, 'Close');
+
         return;
       }
 
