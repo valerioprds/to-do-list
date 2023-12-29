@@ -13,7 +13,6 @@ export class HeaderComponent {
 
   showPendingTasks() {
     this.router.navigate(['']);
-
   }
 
   showDeleted() {
@@ -26,6 +25,5 @@ export class HeaderComponent {
 
   showCompletedTasks() {
     this.router.navigate(['/completed']);
-
   }
 }

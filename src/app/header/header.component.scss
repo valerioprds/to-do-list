@@ -1,27 +1,24 @@
-/* Custom Button Styles */
 .btn-link {
-  text-decoration: none; /* Remove underlining */
-  color: #0d6efd; /* Bootstrap primary color - you can change it */
+  text-decoration: none;
+  color: #0d6efd;
   background-color: transparent;
   border: none;
-  padding: 0.5rem 1rem; /* Standard Bootstrap padding */
-  border-radius: 0.25rem; /* Standard Bootstrap border-radius */
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 }
 
 .btn-link:hover, .btn-link:focus {
-  color: #0b5ed7; /* Darker shade for hover and focus */
-  text-decoration: none; /* Ensure no underline on hover/focus */
-  background-color: #e7f1ff; /* Light background on hover/focus */
+  color: #0b5ed7;
+  text-decoration: none;
+  background-color: #e7f1ff;
 }
 
 
-/* Responsive Design - Adjust as needed */
 @media (max-width: 576px) {
   .btn-link {
-      font-size: 0.9rem; /* Smaller font size on smaller screens */
-      padding: 0.4rem 0.9rem; /* Slightly smaller padding */
+      font-size: 0.9rem;
+      padding: 0.4rem 0.9rem;
   }
 }
 
-/* Add any additional responsive styles as needed */
