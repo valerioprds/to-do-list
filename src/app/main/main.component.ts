@@ -42,7 +42,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.todoForm = this.formBuilder.group({
-      taskTitle: ['', [Validators.required, Validators.minLength(6)]],
+      taskTitle: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
 
