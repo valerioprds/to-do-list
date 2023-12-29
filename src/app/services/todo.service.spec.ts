@@ -8,23 +8,19 @@ describe('TodoService', () => {
   beforeEach(() => {
     mockLocalStorage = {};
 
-    // Clearing and re-mocking localStorage
-    jest.restoreAllMocks();
-    jest
-      .spyOn(window.localStorage, 'getItem')
-      .mockImplementation((key: string) => {
-        return mockLocalStorage[key] || null;
-      });
-    jest
-      .spyOn(window.localStorage, 'setItem')
-      .mockImplementation((key: string, value: string) => {
-        mockLocalStorage[key] = value;
-      });
-    jest
-      .spyOn(window.localStorage, 'removeItem')
-      .mockImplementation((key: string) => {
-        delete mockLocalStorage[key];
-      });
+    // Custom mock for localStorage
+    Object.defineProperty(window, 'localStorage', {
+      value: {
+        getItem: jest.fn((key: string) => mockLocalStorage[key] || null),
+        setItem: jest.fn((key: string, value: string) => {
+          mockLocalStorage[key] = value;
+        }),
+        removeItem: jest.fn((key: string) => {
+          delete mockLocalStorage[key];
+        }),
+      },
+      writable: true,
+    });
 
     service = new TodoService();
   });
@@ -58,6 +54,33 @@ describe('TodoService', () => {
     });
   });
 
+  describe('getCompletedTodos', () => {
+    it('should return completed todos', () => {
+      const todo1: Todo = { title: 'Todo 1', isCompleted: false };
+      const todo2: Todo = { title: 'Todo 2', isCompleted: false }; // Initially not completed
+      service.addTodo(todo1);
+      service.addTodo(todo2);
+
+      // Mark todo2 as completed
+      service.completeTodo(todo2);
+
+      expect(service.getCompletedTodos()).toContainEqual(expect.objectContaining({ title: 'Todo 2', isCompleted: true }));
+      expect(service.getCompletedTodos()).not.toContainEqual(expect.objectContaining({ title: 'Todo 1', isCompleted: false }));
+    });
+  });
+
+
+  describe('completeTodo', () => {
+    it('should mark a todo as completed and move it to the completed list', () => {
+      const todo: Todo = { title: 'Todo', isCompleted: false };
+      service.addTodo(todo);
+      service.completeTodo(todo);
+      expect(service.getTodos()).not.toContain(todo);
+      expect(service.getCompletedTodos()).toContain(todo);
+      expect(todo.isCompleted).toBe(true);
+    });
+  });
+
   describe('loadTodosFromLocalStorage', () => {
     it('should load todos from localStorage on service initialization', () => {
       const storedTodos = [{ title: 'Stored Todo', isCompleted: false }];
@@ -72,4 +95,14 @@ describe('TodoService', () => {
       expect(service.getTodos()).toEqual([]);
     });
   });
+
+  describe('saveTodosToLocalStorage', () => {
+    it('should save todos to localStorage', () => {
+      const todo: Todo = { title: 'New Todo', isCompleted: false };
+      service.addTodo(todo);
+      expect(JSON.parse(mockLocalStorage['todos'])).toContainEqual(todo);
+    });
+  });
+
+  // Add more tests as needed
 });
