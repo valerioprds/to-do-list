@@ -1,35 +1,54 @@
-# ToDoList
+# Documentation for To-Do List Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.8.
+## Overview
+This document provides a comprehensive guide to the "To-Do List" Angular application. The app is structured to manage tasks with features like adding, deleting, and marking tasks as completed. It leverages Angular's reactive forms for input handling and Angular Material for UI components.
 
-## Development server
+## Package Dependencies (`package.json`)
+- **Angular Core & Related Libraries**: Version 17.0.0, enabling robust app architecture.
+- **Material Design**: Angular Material (v17.0.4) for rich UI components.
+- **RxJS**: Reactive programming library.
+- **Jest**: Testing framework for JavaScript.
+- **TypeScript**: Programming language used, version ~5.2.2.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Main Components
 
-## Code scaffolding
+### `MainComponent`
+- **Purpose**: Core component for adding and displaying tasks.
+- **Features**:
+  - Add new tasks with validation.
+  - Display pending tasks with options to complete or delete.
+- **Form Handling**: Uses `FormGroup` from Angular's `ReactiveFormsModule`.
+- **Services**: Interacts with `TodoService` for task management.
+- **Snackbar**: Utilizes Angular Material's `MatSnackBar` for user notifications.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### `HeaderComponent`
+- **Purpose**: Navigation and task filtering.
+- **Navigation**: Uses Angular's `Router` for navigating between different task views (pending, completed, deleted, all).
+  
+### `DeletedTodosComponent`
+- **Purpose**: Display deleted tasks.
+- **Service Interaction**: Fetches deleted tasks from `TodoService`.
 
-## Build
+### `CompletedTodosComponent`
+- **Purpose**: Display completed tasks.
+- **Service Interaction**: Fetches completed tasks from `TodoService`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### `AllItemsComponent`
+- **Purpose**: Display all tasks.
+- **Service Interaction**: Fetches all tasks from `TodoService`.
 
-## Running unit tests
+## HTML Templates
+Each component has an associated HTML template, structured to display and interact with tasks accordingly. The templates are built with Angular's template syntax and integrated with Angular Material components for a cohesive design.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## CSS/SCSS Styles
+Styles for each component are defined in their respective SCSS files, ensuring a modular and maintainable styling approach.
 
-## Running end-to-end tests
+## Services
+- **`TodoService`**: Central service for task management. Provides methods for adding, deleting, completing, and retrieving tasks in different states.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Testing
+- Configured with Jest, offering a robust testing framework.
+- `jest-preset-angular` for Angular-specific configurations.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-
-
-npm run test -- header.component.spec.ts
-
-
-how to install the app 
-how to run tests
+## Conclusion
+This To-Do List application exemplifies a modern Angular application with a focus on modularity, reactive forms, and user interaction. It's designed to be scalable and maintainable, leveraging Angular's ecosystem and best practices.
