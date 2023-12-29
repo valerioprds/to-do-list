@@ -8,6 +8,6 @@ export const routes: Routes = [
   { path: 'deleted', component: DeletedTodosComponent },
 
 
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+ // { path: '**', redirectTo: '', pathMatch: 'full' },
 
 ];

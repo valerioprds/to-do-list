@@ -32,9 +32,9 @@ export class TodoService {
   }
 
   getDeletedTodos(): Todo[] {
-    console.log(
+   /*  console.log(
       `888888888888getDeletedTodos    deleted array ${this.deletedTodos} `
-    );
+    ); */
     return this.deletedTodos;
   }
 
