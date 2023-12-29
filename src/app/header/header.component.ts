@@ -11,6 +11,11 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   constructor(private router: Router) {}
 
+  showPendingTasks() {
+    this.router.navigate(['']);
+
+  }
+
   showDeleted() {
     this.router.navigate(['/deleted']);
   }

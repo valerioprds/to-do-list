@@ -11,18 +11,20 @@ import {
 import { CommonModule } from '@angular/common';
 import { TodoService } from '../services/todo.service';
 import { DeletedTodosComponent } from '../deleted-todos/deleted-todos.component';
+import { CompletedTodosComponent } from "../completed-todos/completed-todos.component";
 
 @Component({
-  selector: 'app-main',
-  standalone: true,
-  templateUrl: './main.component.html',
-  styleUrl: './main.component.scss',
-  imports: [
-    HeaderComponent,
-    ReactiveFormsModule,
-    CommonModule,
-    DeletedTodosComponent,
-  ],
+    selector: 'app-main',
+    standalone: true,
+    templateUrl: './main.component.html',
+    styleUrl: './main.component.scss',
+    imports: [
+        HeaderComponent,
+        ReactiveFormsModule,
+        CommonModule,
+        DeletedTodosComponent,
+        CompletedTodosComponent
+    ]
 })
 export class MainComponent implements OnInit {
   todoForm!: FormGroup;

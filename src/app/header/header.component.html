@@ -14,17 +14,37 @@
       >
     </a>
 
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <button (click)="showDeleted()" class="btn btn-link">Deleted</button>
-      </li>
-      <li class="nav-item">
-        <button (click)="showCompletedTasks()" class="btn btn-link">Completed</button>
-      </li>
-      <li class="nav-item">
-        <button (click)="showAlltasks()" class="btn btn-link">All Tasks</button>
-      </li>
+    <div class="dropdown">
+      <button
+        class="btn btn-link dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Filter Tasks
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li>
+          <button class="dropdown-item" (click)="showPendingTasks()">
+            Pending Tasks
+          </button>
+        </li>
 
-    </ul>
+        <li>
+          <button class="dropdown-item" (click)="showAlltasks()">
+            All Tasks
+          </button>
+        </li>
+        <li>
+          <button class="dropdown-item" (click)="showCompletedTasks()">
+            Completed
+          </button>
+        </li>
+        <li>
+          <button class="dropdown-item" (click)="showDeleted()">Deleted</button>
+        </li>
+      </ul>
+    </div>
   </header>
 </div>

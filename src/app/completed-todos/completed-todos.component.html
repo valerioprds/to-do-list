@@ -1,12 +1,11 @@
-<app-header></app-header>
+<!-- Existing code for active tasks -->
 
+<!-- Completed Tasks Section -->
 <div class="container mt-3">
   <h1 class="text-center m-3">Completed Tasks</h1>
-
   <p class="item-count">Total Items: {{ completedTodos.length }}</p>
-
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let todo of completedTodos">
+    <li class="list-group-item completed-task" *ngFor="let todo of completedTodos">
       {{ todo.title }}
     </li>
   </ul>
