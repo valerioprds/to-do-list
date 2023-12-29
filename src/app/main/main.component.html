@@ -1,5 +1,3 @@
-<app-header></app-header>
-
 <div class="container mt-4">
   <!-- Form for adding new To-Do items -->
   <form [formGroup]="todoForm" (ngSubmit)="addTodo()" class="input-group mb-3">
@@ -55,8 +53,6 @@
       </button>
     </li>
   </ul>
-
-
 </div>
 
 <app-completed-todos></app-completed-todos>
