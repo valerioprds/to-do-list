@@ -14,9 +14,16 @@ $font-family: 'Arial', sans-serif;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 h1 {
-  color:$secondary-color ;
+  color: $secondary-color;
 }
 
 /* Style for the input group */
@@ -26,6 +33,11 @@ h1 {
     border-radius: 4px;
     padding: 10px 15px;
     font-family: $font-family;
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($primary-color, 0.25);
+    }
   }
 
   button.btn-primary {
@@ -50,6 +62,7 @@ h1 {
     padding: 15px;
     border-radius: 6px;
     transition: background-color 0.3s;
+    animation: slideIn 0.5s ease-out;
 
     &:hover {
       background-color: $todo-item-hover-color;
@@ -68,6 +81,7 @@ h1 {
         &.text-decoration-line-through {
           color: $completed-text-color;
           text-decoration: line-through;
+          transition: color 0.3s ease-in-out;
         }
       }
     }
@@ -79,12 +93,22 @@ h1 {
       background: none;
       padding: 5px 10px;
       font-size: 16px;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: lighten($deleted-text-color, 20%);
+      }
 
       i.fa-trash-can {
         color: inherit;
       }
     }
   }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
 /* Style for item count text */

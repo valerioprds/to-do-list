@@ -22,9 +22,7 @@
   </form>
   <h1 class="text-center m-3">Pending Tasks</h1>
 
-
   <p class="item-count">Total Items: {{ todos.length }}</p>
-
 
   <!-- List of To-Do items -->
   <ul class="list-group">
@@ -53,7 +51,7 @@
         class="btn btn-sm"
         (click)="deleteTodo(todo)"
       >
-        <i class="fa-solid fa-trash-can" style="color: #f00000"></i>
+        <i class="fa-solid fa-trash-can fa-bounce" style="color: #f00000"></i>
       </button>
     </li>
   </ul>
