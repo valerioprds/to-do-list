@@ -10,13 +10,12 @@ export class TodoService {
 
   constructor() {
     this.loadTodosFromLocalStorage();
+    this.loadDeletedTodosFromLocalStorage();
   }
 
   getTodos(): Todo[] {
     return this.todos;
   }
-
-
 
   addTodo(todo: Todo): void {
     this.todos.push(todo);
@@ -24,17 +23,13 @@ export class TodoService {
   }
 
   deleteTodo(todo: Todo): void {
-    console.log(`11111111111111 from service ${todo.title}`);
     this.todos = this.todos.filter((t) => t !== todo);
     this.deletedTodos.push(todo);
     this.saveTodosToLocalStorage();
-    //console.log(`deleted array ${this.deletedTodos}`)
+    this.saveDeletedTodosToLocalStorage();
   }
 
   getDeletedTodos(): Todo[] {
-   /*  console.log(
-      `888888888888getDeletedTodos    deleted array ${this.deletedTodos} `
-    ); */
     return this.deletedTodos;
   }
 
@@ -46,6 +41,17 @@ export class TodoService {
     const savedTodos = localStorage.getItem('todos');
     if (savedTodos) {
       this.todos = JSON.parse(savedTodos);
+    }
+  }
+
+  private saveDeletedTodosToLocalStorage(): void {
+    localStorage.setItem('deletedTodos', JSON.stringify(this.deletedTodos));
+  }
+
+  private loadDeletedTodosFromLocalStorage(): void {
+    const savedDeletedTodos = localStorage.getItem('deletedTodos');
+    if (savedDeletedTodos) {
+      this.deletedTodos = JSON.parse(savedDeletedTodos);
     }
   }
 }
