@@ -79,4 +79,10 @@ export class TodoService {
       this.completedTodos = JSON.parse(savedCompletedTodos);
     }
   }
+
+
+  getAllTodos(): Todo[] {
+    // Combine all lists into one array and return it
+    return [...this.todos, ...this.deletedTodos, ...this.completedTodos];
+  }
 }
