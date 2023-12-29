@@ -18,4 +18,9 @@ export class HeaderComponent {
   showAlltasks() {
     this.router.navigate(['/all']);
   }
+
+  showCompletedTasks() {
+    this.router.navigate(['/completed']);
+
+  }
 }

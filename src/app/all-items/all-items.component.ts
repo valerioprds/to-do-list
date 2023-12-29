@@ -14,7 +14,5 @@ import { HeaderComponent } from "../header/header.component";
 export class AllItemsComponent {
   constructor(private todoService: TodoService) {}
 
-  get completedTodos(): Todo[] {
-    return this.todoService.getCompletedTodos();
-  }
+  
 }
