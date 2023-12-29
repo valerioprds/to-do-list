@@ -1,5 +1,9 @@
 <app-header></app-header>
+
+
 <div class="container">
+  <p class="item-count">Total Items: {{ completedTodos.length }}</p>
+
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let todo of completedTodos">
       {{ todo.title }}
