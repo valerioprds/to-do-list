@@ -10,14 +10,19 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TodoService } from '../services/todo.service';
-import { DeletedTodosComponent } from "../deleted-todos/deleted-todos.component";
+import { DeletedTodosComponent } from '../deleted-todos/deleted-todos.component';
 
 @Component({
-    selector: 'app-main',
-    standalone: true,
-    templateUrl: './main.component.html',
-    styleUrl: './main.component.scss',
-    imports: [HeaderComponent, ReactiveFormsModule, CommonModule, DeletedTodosComponent]
+  selector: 'app-main',
+  standalone: true,
+  templateUrl: './main.component.html',
+  styleUrl: './main.component.scss',
+  imports: [
+    HeaderComponent,
+    ReactiveFormsModule,
+    CommonModule,
+    DeletedTodosComponent,
+  ],
 })
 export class MainComponent implements OnInit {
   todoForm!: FormGroup;
@@ -60,8 +65,12 @@ export class MainComponent implements OnInit {
   }
 
   deleteTodo(todo: Todo) {
-    console.log(todo.title)
+    console.log(todo.title);
     this.todoService.deleteTodo(todo);
     //console.log(`${todo} from main component`);
+  }
+
+  completeTodo(todo: Todo) {
+    this.todoService.completeTodo(todo);
   }
 }
