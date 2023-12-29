@@ -25,7 +25,7 @@
 
   <!-- List of To-Do items -->
   <ul class="list-group">
-    <li style="border: 3px solid red;"
+    <li
       class="list-group-item d-flex justify-content-between align-items-center"
       *ngFor="let todo of todos"
       (mouseenter)="hoveringOverItem = todo"
@@ -55,7 +55,3 @@
     </li>
   </ul>
 </div>
-
-
-
-<app-deleted-todos></app-deleted-todos>
